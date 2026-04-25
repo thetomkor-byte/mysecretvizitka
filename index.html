@@ -87,12 +87,20 @@
             background: #222222;
             border-radius: 14px;
             padding: 18px 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             border-left: 3px solid #c9a96e;
         }
 
         .resume p { margin: 0 0 10px 0; }
         .resume p:last-child { margin-bottom: 0; }
+
+        .contact-notice {
+            font-size: 13px;
+            color: #c9a96e;
+            margin-bottom: 18px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
 
         .qr-section { margin-top: 10px; }
 
@@ -140,7 +148,6 @@
             margin-top: 4px;
         }
 
-        /* Модальное окно */
         .modal {
             display: none;
             position: fixed;
@@ -233,6 +240,10 @@
             <p>💡 Turn non-obvious insights into clear solutions.</p>
         </div>
 
+        <div class="contact-notice" id="contact-notice">
+            🔐 Contact via Session ↙️
+        </div>
+
         <div class="qr-section">
             <img src="qrcode.jpg" alt="Session QR" class="qr-code" onclick="openModal()">
             <div class="qr-hint" id="qr-hint">📷 Tap QR to open</div>
@@ -243,7 +254,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно -->
     <div class="modal" id="qrModal" onclick="closeModal()">
         <img src="qrcode.jpg" alt="Session QR" onclick="event.stopPropagation()">
         <button class="modal-close" id="close-btn" onclick="closeModal()">↩️ Close</button>
@@ -272,6 +282,7 @@
                     "🧩 Develop non-standard strategies for complex challenges.",
                     "💡 Turn non-obvious insights into clear solutions."
                 ],
+                contact: "🔐 Contact via Session ↙️",
                 qrHint: "📷 Tap QR to open",
                 idHint: "📋 Tap ID to copy",
                 closeBtn: "↩️ Close",
@@ -286,6 +297,7 @@
                     "🧩 Разрабатываю нестандартные стратегии под сложные задачи.",
                     "💡 Превращаю неочевидные инсайты в понятные решения."
                 ],
+                contact: "🔐 Контакты для связи через Session ↙️",
                 qrHint: "📷 Нажми на QR чтобы открыть",
                 idHint: "📋 Нажми на ID чтобы скопировать",
                 closeBtn: "↩️ Закрыть",
@@ -312,6 +324,7 @@
             const resumeDiv = document.getElementById('resume-text');
             resumeDiv.innerHTML = d.resume.map(p => `<p>${p}</p>`).join('');
 
+            document.getElementById('contact-notice').textContent = d.contact;
             document.getElementById('qr-hint').textContent = d.qrHint;
             document.getElementById('id-hint').textContent = d.idHint;
             document.getElementById('close-btn').textContent = d.closeBtn;
