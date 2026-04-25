@@ -115,6 +115,18 @@
             margin-bottom: 10px;
             background: #fff;
             padding: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .qr-code:active {
+            opacity: 0.8;
+        }
+
+        .qr-hint {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 8px;
         }
 
         .session-id {
@@ -124,6 +136,36 @@
             line-height: 1.4;
             max-width: 280px;
             margin: 0 auto;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .session-id:active {
+            background: #2a2a2a;
+        }
+
+        /* Всплывающая подсказка */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c9a96e;
+            color: #0d0d0d;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
         }
 
         .error-screen {
@@ -164,12 +206,16 @@
         </div>
 
         <div class="qr-section">
-            <img src="qrcode.jpg" alt="Session QR" class="qr-code">
-            <div class="session-id">
+            <img src="qrcode.jpg" alt="Session QR" class="qr-code" id="qrImage" onclick="saveQR()">
+            <div class="qr-hint">📷 Tap QR to save</div>
+            <div class="session-id" id="sessionId" onclick="copySession()">
                 0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
             </div>
         </div>
     </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -215,6 +261,38 @@
 
             const resumeDiv = document.getElementById('resume-text');
             resumeDiv.innerHTML = data[lang].resume.map(p => `<p>${p}</p>`).join('');
+        }
+
+        // Копирование Session ID
+        function copySession() {
+            const id = document.getElementById('sessionId').textContent.trim();
+            navigator.clipboard.writeText(id).then(() => {
+                showToast('✅ Session ID скопирован');
+            }).catch(() => {
+                showToast('⚠️ Не удалось скопировать');
+            });
+        }
+
+        // Сохранение QR-кода
+        function saveQR() {
+            const img = document.getElementById('qrImage');
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'session-qr.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('💾 QR сохранён');
+        }
+
+        // Toast
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            toast.textContent = text;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
         }
     </script>
 
