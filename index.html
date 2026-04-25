@@ -6,11 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Tom Tot — Analyst of the Non-Obvious</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -95,38 +91,32 @@
             border-left: 3px solid #c9a96e;
         }
 
-        .resume p {
-            margin: 0 0 10px 0;
-        }
+        .resume p { margin: 0 0 10px 0; }
+        .resume p:last-child { margin-bottom: 0; }
 
-        .resume p:last-child {
-            margin-bottom: 0;
-        }
-
-        .qr-section {
-            margin-top: 10px;
-        }
+        .qr-section { margin-top: 10px; }
 
         .qr-code {
             width: 140px;
             height: 140px;
             border-radius: 12px;
             border: 2px solid #c9a96e;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             background: #fff;
             padding: 6px;
             cursor: pointer;
             transition: opacity 0.2s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .qr-code:active {
-            opacity: 0.8;
-        }
+        .qr-code:active { opacity: 0.8; }
 
         .qr-hint {
             font-size: 11px;
             color: #888;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .session-id {
@@ -142,19 +132,21 @@
             transition: background 0.2s;
         }
 
-        .session-id:active {
-            background: #2a2a2a;
+        .session-id:active { background: #2a2a2a; }
+
+        .session-hint {
+            font-size: 11px;
+            color: #888;
+            margin-top: 4px;
         }
 
-        /* Модальное окно для QR */
+        /* Модальное окно */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
             z-index: 10000;
             flex-direction: column;
             justify-content: center;
@@ -162,48 +154,31 @@
             padding: 20px;
         }
 
-        .modal.show {
-            display: flex;
-        }
+        .modal.show { display: flex; }
 
         .modal img {
             max-width: 90%;
-            max-height: 70vh;
+            max-height: 65vh;
             border-radius: 16px;
             border: 2px solid #c9a96e;
             background: #fff;
             padding: 8px;
         }
 
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
+        .modal-close {
             margin-top: 20px;
-        }
-
-        .modal-btn {
-            padding: 12px 24px;
-            border-radius: 12px;
+            padding: 12px 28px;
+            background: #333;
+            color: #fff;
             border: none;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: background 0.2s;
         }
 
-        .modal-btn:active {
-            opacity: 0.8;
-        }
-
-        .modal-btn.save {
-            background: #c9a96e;
-            color: #0d0d0d;
-        }
-
-        .modal-btn.close {
-            background: #333;
-            color: #fff;
-        }
+        .modal-close:active { background: #555; }
 
         .toast {
             position: fixed;
@@ -222,17 +197,13 @@
             pointer-events: none;
         }
 
-        .toast.show {
-            opacity: 1;
-        }
+        .toast.show { opacity: 1; }
 
         .error-screen {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: #0d0d0d;
             color: #f0f0f0;
             padding: 40vh 20px 0;
@@ -247,7 +218,6 @@
     <div id="tg-error" class="error-screen">📱<br>Please open this card via Telegram</div>
 
     <div id="main-content" class="card" style="display: none;">
-
         <img src="photo.jpg" alt="Tom Tot" class="avatar">
         <div class="name" id="name-text">Tom Tot</div>
         <div class="role" id="role-text">Analyst of the Non-Obvious</div>
@@ -264,21 +234,19 @@
         </div>
 
         <div class="qr-section">
-            <img src="qrcode.jpg" alt="Session QR" class="qr-code" id="qrImage" onclick="openModal()">
-            <div class="qr-hint">📷 Tap QR to save 📋 Tap ID to copy</div>
+            <img src="qrcode.jpg" alt="Session QR" class="qr-code" onclick="openModal()">
+            <div class="qr-hint" id="qr-hint">📷 Tap QR to open</div>
             <div class="session-id" id="sessionId" onclick="copySession()">
                 0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
             </div>
+            <div class="session-hint" id="id-hint">📋 Tap ID to copy</div>
         </div>
     </div>
 
-    <!-- Модальное окно с QR -->
+    <!-- Модальное окно -->
     <div class="modal" id="qrModal" onclick="closeModal()">
-        <img src="qrcode.jpg" alt="Session QR" id="modalImage" onclick="event.stopPropagation()">
-        <div class="modal-buttons" onclick="event.stopPropagation()">
-            <button class="modal-btn save" onclick="saveQR()">💾 Save to Files</button>
-            <button class="modal-btn close" onclick="closeModal()">✕ Close</button>
-        </div>
+        <img src="qrcode.jpg" alt="Session QR" onclick="event.stopPropagation()">
+        <button class="modal-close" id="close-btn" onclick="closeModal()">↩️ Close</button>
     </div>
 
     <div class="toast" id="toast"></div>
@@ -293,6 +261,8 @@
             document.getElementById('main-content').style.display = 'block';
         }
 
+        let currentLang = 'en';
+
         const data = {
             en: {
                 name: "Tom Tot",
@@ -301,7 +271,12 @@
                     "🔍 Find hidden patterns where others see chaos.",
                     "🧩 Develop non-standard strategies for complex challenges.",
                     "💡 Turn non-obvious insights into clear solutions."
-                ]
+                ],
+                qrHint: "📷 Tap QR to open",
+                idHint: "📋 Tap ID to copy",
+                closeBtn: "↩️ Close",
+                copied: "✅ Session ID copied",
+                failed: "⚠️ Copy failed"
             },
             ru: {
                 name: "Том Тот",
@@ -310,11 +285,18 @@
                     "🔍 Нахожу скрытые закономерности там, где другие видят хаос.",
                     "🧩 Разрабатываю нестандартные стратегии под сложные задачи.",
                     "💡 Превращаю неочевидные инсайты в понятные решения."
-                ]
+                ],
+                qrHint: "📷 Нажми на QR чтобы открыть",
+                idHint: "📋 Нажми на ID чтобы скопировать",
+                closeBtn: "↩️ Закрыть",
+                copied: "✅ Session ID скопирован",
+                failed: "⚠️ Не удалось скопировать"
             }
         };
 
         function setLang(lang) {
+            currentLang = lang;
+
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.textContent.includes(lang.toUpperCase())) {
@@ -322,11 +304,17 @@
                 }
             });
 
-            document.getElementById('name-text').textContent = data[lang].name;
-            document.getElementById('role-text').textContent = data[lang].role;
+            const d = data[lang];
+
+            document.getElementById('name-text').textContent = d.name;
+            document.getElementById('role-text').textContent = d.role;
 
             const resumeDiv = document.getElementById('resume-text');
-            resumeDiv.innerHTML = data[lang].resume.map(p => `<p>${p}</p>`).join('');
+            resumeDiv.innerHTML = d.resume.map(p => `<p>${p}</p>`).join('');
+
+            document.getElementById('qr-hint').textContent = d.qrHint;
+            document.getElementById('id-hint').textContent = d.idHint;
+            document.getElementById('close-btn').textContent = d.closeBtn;
         }
 
         function openModal() {
@@ -340,21 +328,10 @@
         function copySession() {
             const id = document.getElementById('sessionId').textContent.trim();
             navigator.clipboard.writeText(id).then(() => {
-                showToast('✅ Session ID copied');
+                showToast(data[currentLang].copied);
             }).catch(() => {
-                showToast('⚠️ Copy failed');
+                showToast(data[currentLang].failed);
             });
-        }
-
-        function saveQR() {
-            const img = document.getElementById('modalImage');
-            const link = document.createElement('a');
-            link.href = img.src;
-            link.download = 'session-qr.jpg';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showToast('💾 QR saved');
         }
 
         function showToast(text) {
@@ -366,6 +343,5 @@
             }, 2000);
         }
     </script>
-
 </body>
 </html>
