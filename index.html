@@ -227,6 +227,28 @@
             font-size: 16px;
         }
 
+        .service-block ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 6px 0 10px 0;
+        }
+
+        .service-block ul li {
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 8px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .service-block ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #c9a96e;
+            font-weight: bold;
+        }
+
         .price {
             color: #ffffff;
             font-weight: 700;
@@ -321,7 +343,7 @@
                 0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
             </div>
 
-            <button class="details-toggle" id="details-btn" onclick="toggleDetails()">📄 Detailed Resume</button>
+            <button class="details-toggle" id="details-btn" onclick="toggleDetails()">Open Details</button>
             <div class="details-content" id="details-content"></div>
         </div>
     </div>
@@ -355,17 +377,19 @@
                     "💡 Turn non-obvious insights into clear solutions."
                 ],
                 contact: "🔐 Contact via Session ↙️",
-                detailsBtn: "📄 Detailed Resume",
-                detailsBtnClose: "📄 Hide Details",
+                detailsBtn: "Open Details",
+                detailsBtnClose: "Close Details",
                 copied: "✅ Copied",
                 failed: "⚠️ Copy failed",
                 detailsCards: [
                     {
                         title: "👤 Profile",
                         content: `
-                            <p>I work at the level where data ends and intuition begins. I do not replace analysts, lawyers, or due diligence. I add a layer absent from reports: a cross-section of the hidden reality of a deal, a company, negotiations, or a board of directors.</p>
-                            <p>The tool is managed lucid dreaming. I enter it with a specific business request. I return with observed facts translated into business language. This is not esotericism — it is work with unconscious layers of perception. Experience — 20+ years.</p>
-                            <p>I contract only with principals. The role is not publicized. Reports are not stored on corporate servers.</p>
+                            <ul>
+                                <li>I work at the level where data ends and intuition begins. I do not replace analysts, lawyers, or due diligence. I add a layer absent from reports: a cross-section of the hidden reality of a deal, a company, negotiations, or a board of directors.</li>
+                                <li>The tool is managed lucid dreaming. I enter it with a specific business request. I return with observed facts translated into business language. This is not esotericism — it is work with unconscious layers of perception. Experience — 20+ years.</li>
+                                <li>I contract only with principals. The role is not publicized. Reports are not stored on corporate servers.</li>
+                            </ul>
                         `
                     },
                     {
@@ -383,8 +407,10 @@
                     {
                         title: "⚙️ Principle",
                         content: `
-                            <p>Every deal, company, or negotiation has a hidden part. It doesn't make it into reports, isn't spoken aloud at meetings, and isn't captured by conventional analysis. Yet it often determines the outcome. This is the shadow contour — a non-obvious layer of reality lying beyond ordinary perception.</p>
-                            <p>Lucid dreaming is a tool for direct access there. No offices, model-building, or rumor collection. Input — your request. Output — observed facts from the situation's field: what is hidden, where it manifests, how it influences. These are not prophecies, but another method of information gathering. I collect — you decide.</p>
+                            <ul>
+                                <li>Every deal, company, or negotiation has a hidden part. It doesn't make it into reports, isn't spoken aloud at meetings, and isn't captured by conventional analysis. Yet it often determines the outcome. This is the shadow contour — a non-obvious layer of reality lying beyond ordinary perception.</li>
+                                <li>Lucid dreaming is a tool for direct access there. No offices, model-building, or rumor collection. Input — your request. Output — observed facts from the situation's field: what is hidden, where it manifests, how it influences. These are not prophecies, but another method of information gathering. I collect — you decide.</li>
+                            </ul>
                         `
                     },
                     {
@@ -437,8 +463,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>For:</strong> private investors, venture funds, family offices, CEOs before M&A.</p>
-                                <p>You've already completed financial and legal due diligence. There remains a feeling of "something's off" — or you need intuitive validation before a major bet.</p>
-                                <p>I enter the dream with the request "show what is hidden in deal X." By morning — a report: not "invest," but "a glass bridge over rusty water, the partner stands with their back turned — possible deception on their side."</p>
+                                <ul>
+                                    <li>You've already completed financial and legal due diligence. There remains a feeling of "something's off" — or you need intuitive validation before a major bet.</li>
+                                    <li>I enter the dream with the request "show what is hidden in deal X." By morning — a report: not "invest," but "a glass bridge over rusty water, the partner stands with their back turned — possible deception on their side."</li>
+                                </ul>
                                 <p><span class="price">Cost: $15,000 – $30,000 per dream. Package of three deals — $40,000 – $70,000. 100% prepayment.</span></p>
                             </div>
                         `
@@ -448,8 +476,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>For:</strong> owners, CEOs, founders.</p>
-                                <p>You provide 3–7 personas: real people, departments, roles. I enter the dream, gather their avatars, and hold a session. I ask your questions. I listen to what people don't say aloud.</p>
-                                <p>By morning — a protocol: who said what, how they looked, who was silent, who sat with their back turned.</p>
+                                <ul>
+                                    <li>You provide 3–7 personas: real people, departments, roles. I enter the dream, gather their avatars, and hold a session. I ask your questions. I listen to what people don't say aloud.</li>
+                                    <li>By morning — a protocol: who said what, how they looked, who was silent, who sat with their back turned.</li>
+                                </ul>
                                 <p><span class="price">Cost: $20,000 – $40,000 per session. Quarterly subscription — $45,000 – $80,000. 100% prepayment.</span></p>
                             </div>
                         `
@@ -459,8 +489,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>For:</strong> CEOs, strategy chiefs, R&D, founders in fierce competitive battles.</p>
-                                <p>You provide the competitor's company name. I enter the dream and observe their "field": state, vulnerabilities, upcoming moves, internal conflicts. This is not espionage — I do not obtain documents. I read the picture.</p>
-                                <p>Report: "the ship is painting its sides, but there's a leak inside" or "the mechanism is overheating, they are preparing an attack on your segment."</p>
+                                <ul>
+                                    <li>You provide the competitor's company name. I enter the dream and observe their "field": state, vulnerabilities, upcoming moves, internal conflicts. This is not espionage — I do not obtain documents. I read the picture.</li>
+                                    <li>Report: "the ship is painting its sides, but there's a leak inside" or "the mechanism is overheating, they are preparing an attack on your segment."</li>
+                                </ul>
                                 <p><span class="price">Cost: $20,000 – $35,000 per infiltration. Yearly competitor field monitoring — $100,000 – $180,000. No more than 2–3 infiltrations per year for one client.</span></p>
                             </div>
                         `
@@ -470,8 +502,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>For:</strong> company heads, managing partners, high-level lawyers and diplomats.</p>
-                                <p>You provide context: sides, subject, stakes. I enter the dream and live through the negotiations in turn for all participants. I search for breaking points, trigger phrases, hidden threats.</p>
-                                <p>By morning — a negotiation map: atmosphere, breaking moment, gesture or phrase that changes the course, the most dangerous point.</p>
+                                <ul>
+                                    <li>You provide context: sides, subject, stakes. I enter the dream and live through the negotiations in turn for all participants. I search for breaking points, trigger phrases, hidden threats.</li>
+                                    <li>By morning — a negotiation map: atmosphere, breaking moment, gesture or phrase that changes the course, the most dangerous point.</li>
+                                </ul>
                                 <p><span class="price">Cost: $25,000 – $50,000 per session. Annual subscription — $200,000 – $400,000. 100% prepayment.</span></p>
                             </div>
                         `
@@ -481,8 +515,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>For:</strong> CEOs, owners, board chairmen.</p>
-                                <p>You provide the org chart and names of key top managers. I enter the dream with the request "show where the tension is in the company that is being kept silent about." The dream shows a picture: floors, colors, temperatures, sounds.</p>
-                                <p>Report — 1–2 pages. No names. No accusations. Only locations and tensions.</p>
+                                <ul>
+                                    <li>You provide the org chart and names of key top managers. I enter the dream with the request "show where the tension is in the company that is being kept silent about." The dream shows a picture: floors, colors, temperatures, sounds.</li>
+                                    <li>Report — 1–2 pages. No names. No accusations. Only locations and tensions.</li>
+                                </ul>
                                 <p><span class="price">Cost: $25,000 – $40,000 one-time. Quarterly monitoring — $80,000 – $120,000 per year.</span></p>
                             </div>
                         `
@@ -492,7 +528,9 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>For:</strong> board chairmen, independent directors, owners.</p>
-                                <p>I do not attend meetings. 24–48 hours before the board meeting, I receive the agenda and materials. I enter the dream. By morning, I deliver one paragraph: a picture of the hidden dynamics of the upcoming meeting. You may read it aloud or use it for preparation.</p>
+                                <ul>
+                                    <li>I do not attend meetings. 24–48 hours before the board meeting, I receive the agenda and materials. I enter the dream. By morning, I deliver one paragraph: a picture of the hidden dynamics of the upcoming meeting. You may read it aloud or use it for preparation.</li>
+                                </ul>
                                 <p><span class="price">Cost: $15,000 – $25,000 per meeting. Annual contract — $100,000 – $250,000. Absolute confidentiality.</span></p>
                             </div>
                         `
@@ -500,8 +538,10 @@
                     {
                         title: "📬 Contact",
                         content: `
-                            <p>First contact — Session. Secure channel, no names. After NDA — a secure line for further work. My name does not appear in corporate systems. The report leaves no traces.</p>
-                            <p>I work where numbers stay silent.<br>If your request is exactly there — you know how to reach me.</p>
+                            <ul>
+                                <li>First contact — Session. Secure channel, no names. After NDA — a secure line for further work. My name does not appear in corporate systems. The report leaves no traces.</li>
+                                <li>I work where numbers stay silent.<br>If your request is exactly there — you know how to reach me.</li>
+                            </ul>
                         `
                     }
                 ]
@@ -515,17 +555,19 @@
                     "💡 Превращаю неочевидные инсайты в понятные решения."
                 ],
                 contact: "🔐 Контакты для связи через Session ↙️",
-                detailsBtn: "📄 Подробная информация",
-                detailsBtnClose: "📄 Скрыть подробности",
+                detailsBtn: "Открыть подробности",
+                detailsBtnClose: "Закрыть подробности",
                 copied: "✅ Скопировано",
                 failed: "⚠️ Не удалось скопировать",
                 detailsCards: [
                     {
                         title: "👤 Профиль",
                         content: `
-                            <p>Работаю на том уровне, где заканчиваются данные и начинается интуиция. Не заменяю аналитику, юристов и due diligence. Добавляю слой, которого нет в отчётах: срез скрытой реальности сделки, компании, переговоров или совета директоров.</p>
-                            <p>Инструмент — управляемое осознанное сновидение. Вхожу в него с конкретным бизнес-запросом. Возвращаюсь с наблюдаемыми фактами, переведёнными на деловой язык. Это не эзотерика, а работа с неосознаваемыми слоями восприятия. Стаж — более 20 лет.</p>
-                            <p>Нанимаюсь только к первым лицам. Роль не афишируется. Отчёты не хранятся на корпоративных серверах.</p>
+                            <ul>
+                                <li>Работаю на том уровне, где заканчиваются данные и начинается интуиция. Не заменяю аналитику, юристов и due diligence. Добавляю слой, которого нет в отчётах: срез скрытой реальности сделки, компании, переговоров или совета директоров.</li>
+                                <li>Инструмент — управляемое осознанное сновидение. Вхожу в него с конкретным бизнес-запросом. Возвращаюсь с наблюдаемыми фактами, переведёнными на деловой язык. Это не эзотерика, а работа с неосознаваемыми слоями восприятия. Стаж — более 20 лет.</li>
+                                <li>Нанимаюсь только к первым лицам. Роль не афишируется. Отчёты не хранятся на корпоративных серверах.</li>
+                            </ul>
                         `
                     },
                     {
@@ -543,8 +585,10 @@
                     {
                         title: "⚙️ Принцип",
                         content: `
-                            <p>У каждой сделки, компании или переговоров есть скрытая часть. Она не попадает в отчёты, не проговаривается на совещаниях, не улавливается привычными методами анализа. Но именно она часто определяет исход. Это теневой контур — неочевидный слой реальности, который лежит за пределами обычного восприятия.</p>
-                            <p>Осознанное сновидение — инструмент прямого доступа туда. Никаких кабинетов, построения моделей, сбора слухов. На входе — ваш запрос. На выходе — наблюдаемые факты из поля ситуации: что скрыто, где проявляется, как влияет. Это не пророчества, а иной способ сбора информации. Я собираю — Вы решаете.</p>
+                            <ul>
+                                <li>У каждой сделки, компании или переговоров есть скрытая часть. Она не попадает в отчёты, не проговаривается на совещаниях, не улавливается привычными методами анализа. Но именно она часто определяет исход. Это теневой контур — неочевидный слой реальности, который лежит за пределами обычного восприятия.</li>
+                                <li>Осознанное сновидение — инструмент прямого доступа туда. Никаких кабинетов, построения моделей, сбора слухов. На входе — ваш запрос. На выходе — наблюдаемые факты из поля ситуации: что скрыто, где проявляется, как влияет. Это не пророчества, а иной способ сбора информации. Я собираю — Вы решаете.</li>
+                            </ul>
                         `
                     },
                     {
@@ -597,8 +641,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>Для:</strong> частных инвесторов, венчурных фондов, family office, CEO перед M&A.</p>
-                                <p>Вы уже провели финансовый и юридический due diligence. Осталось чувство «что-то не так» — или нужна интуитивная валидация перед крупной ставкой.</p>
-                                <p>Вхожу в сон с запросом «показать скрытое в сделке X». Утром — отчёт: не «вкладывайся», а «стеклянный мост над ржавой водой, партнёр стоит спиной — возможен обман с его стороны».</p>
+                                <ul>
+                                    <li>Вы уже провели финансовый и юридический due diligence. Осталось чувство «что-то не так» — или нужна интуитивная валидация перед крупной ставкой.</li>
+                                    <li>Вхожу в сон с запросом «показать скрытое в сделке X». Утром — отчёт: не «вкладывайся», а «стеклянный мост над ржавой водой, партнёр стоит спиной — возможен обман с его стороны».</li>
+                                </ul>
                                 <p><span class="price">Стоимость: $15 000 – $30 000 за сон. Пакет из трёх сделок — $40 000 – $70 000. Предоплата 100%.</span></p>
                             </div>
                         `
@@ -608,8 +654,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>Для:</strong> собственников, CEO, основателей.</p>
-                                <p>Даёте 3–7 персон: реальные люди, отделы, роли. Вхожу в сон, собираю их аватары и провожу заседание. Задаю ваши вопросы. Слушаю то, что люди не говорят вслух.</p>
-                                <p>Утром — протокол: кто что сказал, как выглядел, кто молчал, кто сидел спиной.</p>
+                                <ul>
+                                    <li>Даёте 3–7 персон: реальные люди, отделы, роли. Вхожу в сон, собираю их аватары и провожу заседание. Задаю ваши вопросы. Слушаю то, что люди не говорят вслух.</li>
+                                    <li>Утром — протокол: кто что сказал, как выглядел, кто молчал, кто сидел спиной.</li>
+                                </ul>
                                 <p><span class="price">Стоимость: $20 000 – $40 000 за сессию. Квартальный абонемент — $45 000 – $80 000. Предоплата 100%.</span></p>
                             </div>
                         `
@@ -619,8 +667,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>Для:</strong> CEO, глав стратегии, R&D, основателей в острой конкурентной борьбе.</p>
-                                <p>Даёте название компании-конкурента. Вхожу в сон и наблюдаю их «поле»: состояние, уязвимости, готовящиеся шаги, внутренние конфликты. Это не шпионаж — не добываю документы. Считываю картину.</p>
-                                <p>Отчёт: «корабль красит борта, но внутри течь» или «механизм перегревается, готовят атаку на ваш сегмент».</p>
+                                <ul>
+                                    <li>Даёте название компании-конкурента. Вхожу в сон и наблюдаю их «поле»: состояние, уязвимости, готовящиеся шаги, внутренние конфликты. Это не шпионаж — не добываю документы. Считываю картину.</li>
+                                    <li>Отчёт: «корабль красит борта, но внутри течь» или «механизм перегревается, готовят атаку на ваш сегмент».</li>
+                                </ul>
                                 <p><span class="price">Стоимость: $20 000 – $35 000 за проникновение. Мониторинг конкурентного поля на год — $100 000 – $180 000. Не более 2–3 проникновений в год для одного клиента.</span></p>
                             </div>
                         `
@@ -630,8 +680,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>Для:</strong> глав компаний, управляющих партнёров, юристов и дипломатов высокого уровня.</p>
-                                <p>Даёте контекст: стороны, предмет, ставки. Вхожу в сон и проживаю переговоры по очереди за всех участников. Ищу точки слома, фразы-триггеры, скрытые угрозы.</p>
-                                <p>Утром — карта переговоров: атмосфера, момент слома, жест или фраза, меняющая ход, самая опасная точка.</p>
+                                <ul>
+                                    <li>Даёте контекст: стороны, предмет, ставки. Вхожу в сон и проживаю переговоры по очереди за всех участников. Ищу точки слома, фразы-триггеры, скрытые угрозы.</li>
+                                    <li>Утром — карта переговоров: атмосфера, момент слома, жест или фраза, меняющая ход, самая опасная точка.</li>
+                                </ul>
                                 <p><span class="price">Стоимость: $25 000 – $50 000 за сессию. Годовой абонемент — $200 000 – $400 000. Предоплата 100%.</span></p>
                             </div>
                         `
@@ -641,8 +693,10 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>Для:</strong> CEO, собственников, председателей советов.</p>
-                                <p>Даёте оргструктуру и имена ключевых топов. Вхожу в сон с запросом «показать, где в компании напряжение, о котором молчат». Сон показывает картину: этажи, цвета, температуры, звуки.</p>
-                                <p>Отчёт — 1–2 страницы. Без имён. Без обвинений. Только локации и напряжения.</p>
+                                <ul>
+                                    <li>Даёте оргструктуру и имена ключевых топов. Вхожу в сон с запросом «показать, где в компании напряжение, о котором молчат». Сон показывает картину: этажи, цвета, температуры, звуки.</li>
+                                    <li>Отчёт — 1–2 страницы. Без имён. Без обвинений. Только локации и напряжения.</li>
+                                </ul>
                                 <p><span class="price">Стоимость: $25 000 – $40 000 разово. Квартальный мониторинг — $80 000 – $120 000 в год.</span></p>
                             </div>
                         `
@@ -652,7 +706,9 @@
                         content: `
                             <div class="service-block">
                                 <p><strong>Для:</strong> председателей советов, независимых директоров, собственников.</p>
-                                <p>Не присутствую на заседаниях. За 24–48 часов до совета получаю повестку и материалы. Вхожу в сон. Утром передаю один абзац: картину скрытой динамики предстоящего заседания. Можете зачитать или использовать для подготовки.</p>
+                                <ul>
+                                    <li>Не присутствую на заседаниях. За 24–48 часов до совета получаю повестку и материалы. Вхожу в сон. Утром передаю один абзац: картину скрытой динамики предстоящего заседания. Можете зачитать или использовать для подготовки.</li>
+                                </ul>
                                 <p><span class="price">Стоимость: $15 000 – $25 000 за заседание. Годовой контракт — $100 000 – $250 000. Абсолютная конфиденциальность.</span></p>
                             </div>
                         `
@@ -660,8 +716,10 @@
                     {
                         title: "📬 Связаться",
                         content: `
-                            <p>Первый контакт — Session. Защищённый канал, никаких имён. После NDA — защищённая линия для дальнейшей работы. Моё имя не появляется в корпоративных системах. Отчёт не оставляет следов.</p>
-                            <p>Работаю там, где молчат цифры.<br>Если ваш запрос именно там — вы знаете, как со мной связаться.</p>
+                            <ul>
+                                <li>Первый контакт — Session. Защищённый канал, никаких имён. После NDA — защищённая линия для дальнейшей работы. Моё имя не появляется в корпоративных системах. Отчёт не оставляет следов.</li>
+                                <li>Работаю там, где молчат цифры.<br>Если ваш запрос именно там — вы знаете, как со мной связаться.</li>
+                            </ul>
                         `
                     }
                 ]
