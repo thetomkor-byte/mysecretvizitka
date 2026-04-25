@@ -109,7 +109,7 @@
             height: 136px;
             border-radius: 12px;
             border: 3px solid #c9a96e;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
             background: #fff;
             padding: 6px;
             cursor: pointer;
@@ -121,14 +121,8 @@
 
         .qr-code:active { opacity: 0.8; }
 
-        .qr-hint {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 12px;
-        }
-
         .session-id {
-            font-size: 10px;
+            font-size: 9px;
             color: #888;
             word-break: break-all;
             line-height: 1.4;
@@ -138,16 +132,10 @@
             padding: 8px;
             border-radius: 8px;
             transition: background 0.2s;
+            margin-bottom: 16px;
         }
 
         .session-id:active { background: #2a2a2a; }
-
-        .session-hint {
-            font-size: 14px;
-            color: #888;
-            margin-top: 4px;
-            margin-bottom: 16px;
-        }
 
         .details-toggle {
             display: block;
@@ -183,7 +171,7 @@
             font-size: 15px;
             line-height: 1.7;
             color: #cccccc;
-            background: #1e1e1e;
+            background: #222222;
             border-radius: 14px;
             padding: 18px 16px;
             margin-bottom: 10px;
@@ -252,10 +240,10 @@
             width: 100%; height: 100%;
             background: rgba(0,0,0,0.95);
             z-index: 10000;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            cursor: pointer;
         }
 
         .modal.show { display: flex; }
@@ -267,22 +255,8 @@
             border: 2px solid #c9a96e;
             background: #fff;
             padding: 8px;
+            cursor: default;
         }
-
-        .modal-close {
-            margin-top: 20px;
-            padding: 12px 28px;
-            background: #333;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .modal-close:active { background: #555; }
 
         .toast {
             position: fixed;
@@ -293,7 +267,7 @@
             color: #0d0d0d;
             padding: 10px 20px;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             z-index: 9999;
             opacity: 0;
@@ -343,11 +317,9 @@
 
         <div class="qr-section">
             <img src="qrcode.jpg" alt="Session QR" class="qr-code" onclick="openModal()">
-            <div class="qr-hint" id="qr-hint">Tap QR to open</div>
             <div class="session-id" id="sessionId" onclick="copySession()">
                 0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
             </div>
-            <div class="session-hint" id="id-hint">Tap ID to copy</div>
 
             <button class="details-toggle" id="details-btn" onclick="toggleDetails()">📄 Detailed Resume</button>
             <div class="details-content" id="details-content"></div>
@@ -356,7 +328,6 @@
 
     <div class="modal" id="qrModal" onclick="closeModal()">
         <img src="qrcode.jpg" alt="Session QR" onclick="event.stopPropagation()">
-        <button class="modal-close" id="close-btn" onclick="closeModal()">↩️ Close</button>
     </div>
 
     <div class="toast" id="toast"></div>
@@ -384,12 +355,9 @@
                     "💡 Turn non-obvious insights into clear solutions."
                 ],
                 contact: "🔐 Contact via Session ↙️",
-                qrHint: "Tap QR to open",
-                idHint: "Tap ID to copy",
-                closeBtn: "↩️ Close",
                 detailsBtn: "📄 Detailed Resume",
                 detailsBtnClose: "📄 Hide Details",
-                copied: "✅ Session ID copied",
+                copied: "✅ Copied",
                 failed: "⚠️ Copy failed",
                 detailsCards: [
                     {
@@ -547,12 +515,9 @@
                     "💡 Превращаю неочевидные инсайты в понятные решения."
                 ],
                 contact: "🔐 Контакты для связи через Session ↙️",
-                qrHint: "Нажми на QR чтобы открыть",
-                idHint: "Нажми на ID чтобы скопировать",
-                closeBtn: "↩️ Закрыть",
                 detailsBtn: "📄 Подробная информация",
                 detailsBtnClose: "📄 Скрыть подробности",
-                copied: "✅ Session ID скопирован",
+                copied: "✅ Скопировано",
                 failed: "⚠️ Не удалось скопировать",
                 detailsCards: [
                     {
@@ -737,9 +702,6 @@
             resumeDiv.innerHTML = d.resume.map(p => `<p>${p}</p>`).join('');
 
             document.getElementById('contact-notice').textContent = d.contact;
-            document.getElementById('qr-hint').textContent = d.qrHint;
-            document.getElementById('id-hint').textContent = d.idHint;
-            document.getElementById('close-btn').textContent = d.closeBtn;
 
             const detailsBtn = document.getElementById('details-btn');
             if (detailsOpen) {
