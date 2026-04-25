@@ -58,7 +58,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Переключатель языков — по центру под ролью */
         .lang-switch {
             display: flex;
             justify-content: center;
@@ -92,7 +91,7 @@
             background: #222222;
             border-radius: 14px;
             padding: 18px 16px;
-            margin-bottom: 0;
+            margin-bottom: 20px;
             border-left: 3px solid #c9a96e;
         }
 
@@ -102,6 +101,29 @@
 
         .resume p:last-child {
             margin-bottom: 0;
+        }
+
+        .qr-section {
+            margin-top: 10px;
+        }
+
+        .qr-code {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            border: 2px solid #c9a96e;
+            margin-bottom: 10px;
+            background: #fff;
+            padding: 6px;
+        }
+
+        .session-id {
+            font-size: 10px;
+            color: #888;
+            word-break: break-all;
+            line-height: 1.4;
+            max-width: 280px;
+            margin: 0 auto;
         }
 
         .error-screen {
@@ -127,10 +149,9 @@
     <div id="main-content" class="card" style="display: none;">
 
         <img src="photo.jpg" alt="Tom Tot" class="avatar">
-        <div class="name">Tom Tot</div>
+        <div class="name" id="name-text">Tom Tot</div>
         <div class="role" id="role-text">Analyst of the Non-Obvious</div>
 
-        <!-- Кнопки языков по центру под ролью, EN первая -->
         <div class="lang-switch">
             <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
             <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
@@ -140,6 +161,13 @@
             <p>🔍 Find hidden patterns where others see chaos.</p>
             <p>🧩 Develop non-standard strategies for complex challenges.</p>
             <p>💡 Turn non-obvious insights into clear solutions.</p>
+        </div>
+
+        <div class="qr-section">
+            <img src="qrcode.jpg" alt="Session QR" class="qr-code">
+            <div class="session-id">
+                0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
+            </div>
         </div>
     </div>
 
@@ -155,6 +183,7 @@
 
         const data = {
             en: {
+                name: "Tom Tot",
                 role: "Analyst of the Non-Obvious",
                 resume: [
                     "🔍 Find hidden patterns where others see chaos.",
@@ -163,6 +192,7 @@
                 ]
             },
             ru: {
+                name: "Том Тот",
                 role: "Аналитик Неочевидного",
                 resume: [
                     "🔍 Нахожу скрытые закономерности там, где другие видят хаос.",
@@ -180,6 +210,7 @@
                 }
             });
 
+            document.getElementById('name-text').textContent = data[lang].name;
             document.getElementById('role-text').textContent = data[lang].role;
 
             const resumeDiv = document.getElementById('resume-text');
