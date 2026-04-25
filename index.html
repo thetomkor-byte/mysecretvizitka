@@ -146,6 +146,65 @@
             background: #2a2a2a;
         }
 
+        /* Модальное окно для QR */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 16px;
+            border: 2px solid #c9a96e;
+            background: #fff;
+            padding: 8px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .modal-btn:active {
+            opacity: 0.8;
+        }
+
+        .modal-btn.save {
+            background: #c9a96e;
+            color: #0d0d0d;
+        }
+
+        .modal-btn.close {
+            background: #333;
+            color: #fff;
+        }
+
         .toast {
             position: fixed;
             bottom: 30px;
@@ -205,11 +264,20 @@
         </div>
 
         <div class="qr-section">
-            <img src="qrcode.jpg" alt="Session QR" class="qr-code" id="qrImage" onclick="saveQR()">
+            <img src="qrcode.jpg" alt="Session QR" class="qr-code" id="qrImage" onclick="openModal()">
             <div class="qr-hint">📷 Tap QR to save 📋 Tap ID to copy</div>
             <div class="session-id" id="sessionId" onclick="copySession()">
                 0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно с QR -->
+    <div class="modal" id="qrModal" onclick="closeModal()">
+        <img src="qrcode.jpg" alt="Session QR" id="modalImage" onclick="event.stopPropagation()">
+        <div class="modal-buttons" onclick="event.stopPropagation()">
+            <button class="modal-btn save" onclick="saveQR()">💾 Save to Files</button>
+            <button class="modal-btn close" onclick="closeModal()">✕ Close</button>
         </div>
     </div>
 
@@ -261,6 +329,14 @@
             resumeDiv.innerHTML = data[lang].resume.map(p => `<p>${p}</p>`).join('');
         }
 
+        function openModal() {
+            document.getElementById('qrModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('qrModal').classList.remove('show');
+        }
+
         function copySession() {
             const id = document.getElementById('sessionId').textContent.trim();
             navigator.clipboard.writeText(id).then(() => {
@@ -271,7 +347,7 @@
         }
 
         function saveQR() {
-            const img = document.getElementById('qrImage');
+            const img = document.getElementById('modalImage');
             const link = document.createElement('a');
             link.href = img.src;
             link.download = 'session-qr.jpg';
