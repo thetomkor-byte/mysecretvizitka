@@ -146,7 +146,6 @@
             background: #2a2a2a;
         }
 
-        /* Всплывающая подсказка */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -207,14 +206,13 @@
 
         <div class="qr-section">
             <img src="qrcode.jpg" alt="Session QR" class="qr-code" id="qrImage" onclick="saveQR()">
-            <div class="qr-hint">📷 Tap QR to save</div>
+            <div class="qr-hint">📷 Tap QR to save 📋 Tap ID to copy</div>
             <div class="session-id" id="sessionId" onclick="copySession()">
                 0571165c233236eafe3631d39e7cde3fcd6c9f1bb22b3a60b32803d07c86a8c773
             </div>
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -263,17 +261,15 @@
             resumeDiv.innerHTML = data[lang].resume.map(p => `<p>${p}</p>`).join('');
         }
 
-        // Копирование Session ID
         function copySession() {
             const id = document.getElementById('sessionId').textContent.trim();
             navigator.clipboard.writeText(id).then(() => {
-                showToast('✅ Session ID скопирован');
+                showToast('✅ Session ID copied');
             }).catch(() => {
-                showToast('⚠️ Не удалось скопировать');
+                showToast('⚠️ Copy failed');
             });
         }
 
-        // Сохранение QR-кода
         function saveQR() {
             const img = document.getElementById('qrImage');
             const link = document.createElement('a');
@@ -282,10 +278,9 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            showToast('💾 QR сохранён');
+            showToast('💾 QR saved');
         }
 
-        // Toast
         function showToast(text) {
             const toast = document.getElementById('toast');
             toast.textContent = text;
