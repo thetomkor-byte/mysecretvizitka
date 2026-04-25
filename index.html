@@ -29,32 +29,7 @@
             width: 100%;
             background: #1a1a1a;
             border-radius: 20px;
-            padding: 20px 20px 25px;
-        }
-
-        .lang-switch {
-            display: flex;
-            justify-content: flex-end;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .lang-btn {
-            background: #2a2a2a;
-            border: 1px solid #444;
-            color: #999;
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: #c9a96e;
-            color: #0d0d0d;
-            border-color: #c9a96e;
-            font-weight: 600;
+            padding: 30px 20px 25px;
         }
 
         .avatar {
@@ -79,9 +54,34 @@
             font-size: 15px;
             font-weight: 500;
             color: #c9a96e;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             letter-spacing: 0.5px;
-            min-height: 20px;
+        }
+
+        /* Переключатель языков — по центру под ролью */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #999;
+            padding: 7px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #c9a96e;
+            color: #0d0d0d;
+            border-color: #c9a96e;
+            font-weight: 600;
         }
 
         .resume {
@@ -94,7 +94,6 @@
             padding: 18px 16px;
             margin-bottom: 0;
             border-left: 3px solid #c9a96e;
-            min-height: 100px;
         }
 
         .resume p {
@@ -127,14 +126,16 @@
 
     <div id="main-content" class="card" style="display: none;">
 
-        <div class="lang-switch">
-            <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
-            <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
-        </div>
-
         <img src="photo.jpg" alt="Tom Tot" class="avatar">
         <div class="name">Tom Tot</div>
         <div class="role" id="role-text">Analyst of the Non-Obvious</div>
+
+        <!-- Кнопки языков по центру под ролью, EN первая -->
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+            <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+        </div>
+
         <div class="resume" id="resume-text">
             <p>🔍 Find hidden patterns where others see chaos.</p>
             <p>🧩 Develop non-standard strategies for complex challenges.</p>
@@ -153,20 +154,20 @@
         }
 
         const data = {
-            ru: {
-                role: "Аналитик Неочевидного",
-                resume: [
-                    "🔍 Нахожу скрытые закономерности там, где другие видят хаос.",
-                    "🧩 Разрабатываю нестандартные стратегии под сложные задачи.",
-                    "💡 Превращаю неочевидные инсайты в понятные решения."
-                ]
-            },
             en: {
                 role: "Analyst of the Non-Obvious",
                 resume: [
                     "🔍 Find hidden patterns where others see chaos.",
                     "🧩 Develop non-standard strategies for complex challenges.",
                     "💡 Turn non-obvious insights into clear solutions."
+                ]
+            },
+            ru: {
+                role: "Аналитик Неочевидного",
+                resume: [
+                    "🔍 Нахожу скрытые закономерности там, где другие видят хаос.",
+                    "🧩 Разрабатываю нестандартные стратегии под сложные задачи.",
+                    "💡 Превращаю неочевидные инсайты в понятные решения."
                 ]
             }
         };
